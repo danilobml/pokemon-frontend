@@ -8,7 +8,7 @@ function OnePokemon() {
   const { id } = useParams();
   useEffect(() => {
     axios
-      .get(`${serverURL}}/api/pokemon/${id}`)
+      .get(`${serverURL}/api/pokemon/${id}`)
       .then(function (response) {
         setPokemon(response.data);
       })
