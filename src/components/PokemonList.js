@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import serverURL from "../serverURL";
 const axios = require("axios").default;
 
-function PokemonList() {
+function PokemonList({ myPokemon }) {
   const [pokemons, setPokemons] = useState();
 
   useEffect(() => {
@@ -17,7 +17,6 @@ function PokemonList() {
       });
   }, []);
 
-  console.log(pokemons);
   if (!pokemons) {
     return <h1>Loading</h1>;
   }

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 import serverURL from "../serverURL";
 const axios = require("axios").default;
 
-function OnePokemon() {
+function OnePokemon({ onClick }) {
   const [pokemon, setPokemon] = useState();
   const { id } = useParams();
   useEffect(() => {
@@ -46,6 +47,7 @@ function OnePokemon() {
         <li>Sp. Defense: {pokemon.base["Sp. Defense"]}</li>
         <li>Speed: {pokemon.base.Speed}</li>
       </ul>
+      <Button onClick={() => onClick(pokemon.name.english)}>I choose you!</Button>
     </div>
   );
 }
