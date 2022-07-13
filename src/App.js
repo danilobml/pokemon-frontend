@@ -45,13 +45,14 @@ function App() {
   };
 
   const handleFight = () => {
-    if (myPokemon.base.Attack > enemy.base.Defense) {
-      setWinner(myPokemon.name.english);
-
-      // return <h1>{myPokemon.name.english} won!</h1>;
+    const myPokemonName = myPokemon.name.english;
+    const enemyName = enemy.name.english;
+    const myPokemonAttack = myPokemon.base.Attack;
+    const enemyDefense = enemy.base.Defense;
+    if (myPokemonAttack > enemyDefense) {
+      setWinner(myPokemonName);
     } else {
-      // return <h1>{enemy.name.english} defeated your Pokemon!</h1>;
-      setWinner(enemy.name.english);
+      setWinner(enemyName);
     }
   };
 
@@ -65,7 +66,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<PokemonList myPokemon={myPokemon} itemsPerPage={25} />} />
+        <Route path="/" element={<PokemonList myPokemon={myPokemon} itemsPerPage={60} />} />
         <Route path="/pokemon/:id" element={<OnePokemon onClick={handleChoosePokemon} />} />
         <Route path="/pokemon/:id/:info" element={<PokemonInfo />} />
         <Route path="/fight" element={<FightScreen myPokemon={myPokemon} enemy={enemy} onFight={handleFight} onGoHome={handleGoHome} winner={winner} />} />

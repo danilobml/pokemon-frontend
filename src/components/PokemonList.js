@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import serverURL from "../serverURL";
 import ReactPaginate from "react-paginate";
 const axios = require("axios").default;
@@ -35,19 +35,16 @@ function PokemonList({ itemsPerPage }) {
     return <h1>Loading....</h1>;
   }
   return (
-    <Container fluid className="d-flex flex-column flex-wrap" style={{ height: "100vh" }}>
-      <Container className="d-flex flex-column flex-wrap">
-        <Row>
-          <ul style={{ listStyleType: "none" }}>
-            {pokemons.map((pokemon, index) => (
-              <Col key={index}>
-                <li>
-                  <Link to={`/pokemon/${pokemon.id}`}>{pokemon.name.english}</Link>
-                </li>
-              </Col>
-            ))}
-          </ul>
-        </Row>
+    <Container fluid className="d-flex flex-column align-items-center text-center" style={{ height: "100vh" }}>
+      <h2>Choose your Pokemon!</h2>
+      <Container className="d-flex flex-column">
+        <ul style={{ listStyleType: "none", display: "flex", flexDirection: "column", flexWrap: "wrap", maxHeight: "85vh" }}>
+          {pokemons.map((pokemon, index) => (
+            <li key={index} style={{ fontSize: "1.5rem" }}>
+              <Link to={`/pokemon/${pokemon.id}`}>{pokemon.name.english}</Link>
+            </li>
+          ))}
+        </ul>
       </Container>
       <ReactPaginate nextLabel="Next >" previousLabel="< Previous" breakLabel="..." onPageChange={handleChange} pageCount={totalPages} pageClassName="page-item" pageLinkClassName="page-link" nextClassName="page-item" nextLinkClassName="page-link" previousLinkClassName="page-link" breakClassName="page-item" breakLinkClassName="page-link" containerClassName="pagination" activeClassName="active" pageRangeDisplayed={5} marginPagesDisplayed={5} />
     </Container>
