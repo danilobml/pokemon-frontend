@@ -47,7 +47,7 @@ function OnePokemon({ onClick }) {
         <li>Sp. Defense: {pokemon.base["Sp. Defense"]}</li>
         <li>Speed: {pokemon.base.Speed}</li>
       </ul>
-      <Button onClick={() => onClick(pokemon.name.english)}>I choose you!</Button>
+      <Button onClick={() => onClick(pokemon)}>I choose you!</Button>
     </div>
   );
 }
