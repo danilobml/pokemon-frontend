@@ -5,14 +5,13 @@ const axios = require("axios").default;
 function FightScreen({ myPokemon, enemy, onFight, onGoHome, winner }) {
   const [myPokeImage, setmyPokeImage] = useState("");
   const [enemyImage, setEnemyImage] = useState("");
-
-  console.log(myPokeImage);
+  const myPokemonName = myPokemon.name.english;
+  const enemyPokemonName = enemy.name.english;
 
   useEffect(() => {
     axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${myPokemon.name.english.toLowerCase()}`)
+      .get(`https://pokeapi.co/api/v2/pokemon/${myPokemonName.toLowerCase()}`)
       .then(function (response) {
-        // setPokemons(response.data);
         setmyPokeImage(response.data.sprites.front_default);
       })
       .catch(function (error) {
@@ -20,15 +19,14 @@ function FightScreen({ myPokemon, enemy, onFight, onGoHome, winner }) {
       });
 
     axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${enemy.name.english.toLowerCase()}`)
+      .get(`https://pokeapi.co/api/v2/pokemon/${enemyPokemonName.toLowerCase()}`)
       .then(function (response) {
-        // setPokemons(response.data);
         setEnemyImage(response.data.sprites.front_default);
       })
       .catch(function (error) {
         console.log(error);
       });
-  }, []);
+  }, [myPokemonName, enemyPokemonName]);
 
   return (
     <Container>
@@ -44,14 +42,15 @@ function FightScreen({ myPokemon, enemy, onFight, onGoHome, winner }) {
       </Row>
       <Row className="justify-content-center">
         <Col xs={6}>
-          <Button onClick={onFight}>Fight!</Button>
+          {!winner && <Button onClick={onFight}>Fight!</Button>}
           <Button onClick={onGoHome}>Choose another Pokemon</Button>
         </Col>
       </Row>
       {winner && (
         <Row>
           <Col>
-            <h3>Winner: {winner}</h3>
+            <h3>Winner: {winner}!</h3>
+            {winner === myPokemonName ? <h3>(You Win!)</h3> : <h3>(You Loose!)</h3>}
           </Col>
         </Row>
       )}

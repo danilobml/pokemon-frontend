@@ -65,7 +65,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<PokemonList myPokemon={myPokemon} />} />
+        <Route path="/" element={<PokemonList myPokemon={myPokemon} itemsPerPage={25} />} />
         <Route path="/pokemon/:id" element={<OnePokemon onClick={handleChoosePokemon} />} />
         <Route path="/pokemon/:id/:info" element={<PokemonInfo />} />
         <Route path="/fight" element={<FightScreen myPokemon={myPokemon} enemy={enemy} onFight={handleFight} onGoHome={handleGoHome} winner={winner} />} />
