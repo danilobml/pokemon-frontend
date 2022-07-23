@@ -1,15 +1,12 @@
 import "./Leaderboard.css";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import serverURL from "../serverURL";
 import { Container, Row, Col, Button } from "react-bootstrap";
 const axios = require("axios").default;
 
-const Leaderboard = () => {
+const Leaderboard = ({ onGoHome }) => {
   const [score, setScore] = useState();
   const [winnerList, setWinnerList] = useState();
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -33,7 +30,7 @@ const Leaderboard = () => {
   return (
     <Container fluid className="d-flex flex-column justify-content-center align-items-center pt-3 leader" style={{ height: "100vh" }}>
       <h1>Leaderboard</h1>
-      <Button onClick={() => navigate("/")}>Home</Button>
+      <Button onClick={onGoHome}>Home</Button>
       <Row className="d-flex flex-column justify-content-center align-items-center leader-container">
         <Col>
           <h4>

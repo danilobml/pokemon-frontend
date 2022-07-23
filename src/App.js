@@ -18,11 +18,6 @@ function App() {
 
   const navigate = useNavigate();
 
-  console.log(myPokemon);
-  if (enemy) {
-    console.log(enemy);
-  }
-
   useEffect(() => {
     axios
       .get(`${serverURL}/api/pokemon`)
@@ -58,29 +53,54 @@ function App() {
     let myPokemonHP = myPokemon.base.HP;
     let enemyPokeHP = enemy.base.HP;
 
-    if (myPokemonSpeed > enemyPokeSpeed) {
-      enemyPokeHP -= enemyPokeHP <= 0 ? 0 : myPokemonAttack - enemyDef;
+    if (myPokemonAttack > enemyDef) {
       setWinner(myPokemonName);
-      // setUserWon(true);
-      console.log(enemyPokeHP);
+      setUserWon(true);
     } else {
       setWinner(enemyName);
       setUserWon(false);
     }
-
-    if (enemyPokeHP === 0) {
-      setUserWon(true);
-    } else if (myPokemonHP === 0) {
-      setUserWon(false);
-    }
-    // if (myPokemonAttack > enemyDef) {
-    //   setWinner(myPokemonName);
-    //   setUserWon(true);
-    // } else {
-    //   setWinner(enemyName);
-    //   setUserWon(false);
-    // }
   };
+  //   if (myPokemonSpeed > enemyPokeSpeed) {
+  //     if (enemyPokeHP <= 0) {
+  //       setWinner(myPokemonName);
+  //       setUserWon(true);
+  //     } else {
+  //       enemyPokeHP = myPokemonAttack - enemyDef;
+  //     }
+  //   } else {
+  //     if (myPokemonHP <= 0) {
+  //       setWinner(enemyName);
+  //       setUserWon(false);
+  //     } else {
+  //       myPokemonHP = enemyPokeAttack - myPokemonDef;
+  //     }
+  //   }
+  // };
+  // setWinner(myPokemonName);
+  //   // setUserWon(true);
+  //   console.log(enemyPokeHP);
+  // } else {
+  //   myPokemonHP -= myPokemonHP <= 0 ? 0 : enemyPokeAttack - myPokemonDef;
+  //   console.log(myPokemonHP);
+  //   // setWinner(enemyName);
+  //   // setUserWon(false);
+  // }
+
+  // if (enemyPokeHP === 0) {
+  //   setWinner(myPokemonName);
+  //   setUserWon(true);
+  // } else if (myPokemonHP === 0) {
+  //   setWinner(enemyName);
+  //   setUserWon(false);
+  // }
+  // if (myPokemonAttack > enemyDef) {
+  //   setWinner(myPokemonName);
+  //   setUserWon(true);
+  // } else {
+  //   setWinner(enemyName);
+  //   setUserWon(false);
+  // }
 
   const handleGoHome = () => {
     navigate("/");
@@ -93,10 +113,10 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<PokemonList myPokemon={myPokemon} itemsPerPage={30} />} />
-        <Route path="/pokemon/:id" element={<OnePokemon onClick={handleChoosePokemon} />} />
-        <Route path="/pokemon/:id/:info" element={<PokemonInfo />} />
+        <Route path="/pokemon/:id" element={<OnePokemon onClick={handleChoosePokemon} onGoHome={handleGoHome} />} />
+        <Route path="/pokemon/:id/:info" element={<PokemonInfo onGoHome={handleGoHome} />} />
         <Route path="/fight" element={<FightScreen myPokemon={myPokemon} enemy={enemy} onFight={handleFight} onGoHome={handleGoHome} winner={winner} userWon={userWon} />} />
-        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/leaderboard" element={<Leaderboard onGoHome={handleGoHome} />} />
       </Routes>
     </div>
   );

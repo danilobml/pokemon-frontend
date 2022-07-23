@@ -1,16 +1,14 @@
 import "./OnePokemon.css";
 import { useEffect, useState } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
-import { Container, Row, Col } from "react-bootstrap";
+import { useParams, Link } from "react-router-dom";
+import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import serverURL from "../serverURL";
 const axios = require("axios").default;
 
-function OnePokemon({ onClick }) {
+function OnePokemon({ onClick, onGoHome }) {
   const [pokemon, setPokemon] = useState();
   const { id } = useParams();
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -28,13 +26,14 @@ function OnePokemon({ onClick }) {
     return <h1>Loading</h1>;
   }
   return (
-    <Container fluid className="d-flex flex-column justify-content-center align-items-center pt-3 cont">
+    <Container fluid className="d-flex flex-column justify-content-center align-items-center pt-3 cont" style={{ height: "100vh" }}>
       <div className="box">
         <h1>
           <Link className="link" to={`/pokemon/${id}/name`}>
             {pokemon.name.english}
           </Link>
         </h1>
+        <p>*Click on the title, "Type" or "Base" for details</p>
         <br />
         <h2>Stats:</h2>
         <h3>
@@ -63,7 +62,7 @@ function OnePokemon({ onClick }) {
         <Button onClick={() => onClick(pokemon)}>I choose you!</Button>
         <br />
         <br />
-        <Button onClick={() => navigate("/")}>Coose another pokemon</Button>
+        <Button onClick={onGoHome}>Coose another pokemon</Button>
       </div>
     </Container>
   );
