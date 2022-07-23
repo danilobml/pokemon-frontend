@@ -1,6 +1,6 @@
 .leader{
     background-image: url('../images/arena.jpg');
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-size: cover;
 }
 

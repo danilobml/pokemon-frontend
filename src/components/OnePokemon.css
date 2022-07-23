@@ -1,7 +1,7 @@
 .cont {
     text-align: center;
     background-image: url('../images/city.jpg');
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-size: cover;
 }
 

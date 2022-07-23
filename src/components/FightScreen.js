@@ -49,6 +49,9 @@ function FightScreen({ myPokemon, enemy, onFight, onGoHome, winner, userWon }) {
       });
   }
 
+  console.log(myPokemon);
+  console.log(enemy);
+
   return (
     <Container fluid className="d-flex flex-column justify-content-center align-items-center pt-3 fight-main" style={{ height: "100vh" }}>
       <div className="fight">

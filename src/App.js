@@ -31,7 +31,7 @@ function App() {
 
   const getRandomEnemy = () => {
     const random = Math.floor(Math.random() * 809);
-    console.log(random);
+    // console.log(random);
     setEnemy(pokemons[random]);
   };
 
@@ -50,33 +50,44 @@ function App() {
     const enemyDef = enemy.base.Defense;
     const myPokemonSpeed = myPokemon.base.Speed;
     const enemyPokeSpeed = enemy.base.Speed;
-    let myPokemonHP = myPokemon.base.HP;
-    let enemyPokeHP = enemy.base.HP;
 
-    if (myPokemonAttack > enemyDef) {
-      setWinner(myPokemonName);
-      setUserWon(true);
-    } else {
-      setWinner(enemyName);
-      setUserWon(false);
+    if (myPokemonSpeed > enemyPokeSpeed) {
+      if (myPokemonAttack > enemyDef) {
+        setWinner(myPokemonName);
+        setUserWon(true);
+      } else {
+        setWinner(enemyName);
+        setUserWon(false);
+      }
     }
+    if (enemyPokeSpeed > myPokemonSpeed) {
+      if (enemyPokeAttack > myPokemonDef) {
+        setWinner(enemyName);
+        setUserWon(false);
+      } else {
+        setWinner(myPokemonName);
+        setUserWon(true);
+      }
+    }
+    // if (myPokemonSpeed > enemyPokeSpeed) {
+    //   if (enemyPokeHP <= 0) {
+    //     setWinner(myPokemonName);
+    //     setUserWon(true);
+    //   } else {
+    //     setEnemyPokeHP(enemyPokeHP- (myPokemonAttack - enemyDef));
+    //     setMyPokemonHP(prev - (enemyPokeAttack - myPokemonDef));
+    //   }
+    // } else {
+    //   if (myPokemonHP <= 0) {
+    //     setWinner(enemyName);
+    //     setUserWon(false);
+    //   } else {
+    //     setMyPokemonHP(prev - (enemyPokeAttack - myPokemonDef));
+    //     setEnemyPokeHP(prev - (myPokemonAttack - enemyDef));
+    //   }
+    // }
   };
-  //   if (myPokemonSpeed > enemyPokeSpeed) {
-  //     if (enemyPokeHP <= 0) {
-  //       setWinner(myPokemonName);
-  //       setUserWon(true);
-  //     } else {
-  //       enemyPokeHP = myPokemonAttack - enemyDef;
-  //     }
-  //   } else {
-  //     if (myPokemonHP <= 0) {
-  //       setWinner(enemyName);
-  //       setUserWon(false);
-  //     } else {
-  //       myPokemonHP = enemyPokeAttack - myPokemonDef;
-  //     }
-  //   }
-  // };
+
   // setWinner(myPokemonName);
   //   // setUserWon(true);
   //   console.log(enemyPokeHP);

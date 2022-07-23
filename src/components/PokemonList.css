@@ -1,6 +1,6 @@
 .main {
     background-image: url('../images/pokemon-bck.jpg');
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-size: cover;
 }
 
