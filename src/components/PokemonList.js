@@ -1,8 +1,10 @@
+import "./PokemonList.css";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Container } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { Container, Button } from "react-bootstrap";
 import serverURL from "../serverURL";
 import ReactPaginate from "react-paginate";
+import PokemonCard from "./PokemonCard";
 const axios = require("axios").default;
 
 function PokemonList({ itemsPerPage }) {
@@ -10,6 +12,8 @@ function PokemonList({ itemsPerPage }) {
   const [totalPages, setTotalPages] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const [loading, setLoading] = useState(true);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
@@ -35,13 +39,18 @@ function PokemonList({ itemsPerPage }) {
     return <h1>Loading....</h1>;
   }
   return (
-    <Container fluid className="d-flex flex-column align-items-center text-center" style={{ height: "100vh" }}>
-      <h2>Choose your Pokemon!</h2>
+    <Container fluid className="d-flex flex-column align-items-center text-center main" style={{ height: "100vh" }}>
+      <h1>Choose your Pokemon!</h1>
+      <Button size="sm" onClick={() => navigate("/leaderboard")}>
+        Leaderboard
+      </Button>
       <Container className="d-flex flex-column">
-        <ul style={{ listStyleType: "none", display: "flex", flexDirection: "column", flexWrap: "wrap", maxHeight: "85vh" }}>
+        <ul style={{ listStyleType: "none", display: "flex", flexDirection: "column", flexWrap: "wrap", maxHeight: "83vh" }}>
           {pokemons.map((pokemon, index) => (
-            <li key={index} style={{ fontSize: "1.5rem" }}>
-              <Link to={`/pokemon/${pokemon.id}`}>{pokemon.name.english}</Link>
+            <li key={index} style={{ fontSize: "1.4rem" }}>
+              <Link className="link" to={`/pokemon/${pokemon.id}`}>
+                <PokemonCard name={pokemon.name.english} />
+              </Link>
             </li>
           ))}
         </ul>

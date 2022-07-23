@@ -1,0 +1,21 @@
+.main {
+    background-image: url('../images/pokemon-bck.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card{
+    opacity: 0.55;
+}
+
+.link {
+    text-decoration: none;
+    color: black
+}
+
+h1{
+    font-family: 'Pokemon Solid', sans-serif;
+    color: rgb(255, 217, 0);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
