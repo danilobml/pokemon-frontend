@@ -28,7 +28,7 @@ function OnePokemon({ onClick, onGoHome }) {
   return (
     <Container fluid className="d-flex flex-column justify-content-center align-items-center pt-3 cont" style={{ height: "100vh" }}>
       <div className="box">
-        <h1>
+        <h1 className="title-h1">
           <Link className="link" to={`/pokemon/${id}/name`}>
             {pokemon.name.english}
           </Link>

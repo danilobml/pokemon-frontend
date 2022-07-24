@@ -54,6 +54,7 @@ function FightScreen({ myPokemon, enemy, onFight, onGoHome, winner, userWon }) {
 
   return (
     <Container fluid className="d-flex flex-column justify-content-center align-items-center pt-3 fight-main" style={{ height: "100vh" }}>
+      <h1 className="title-h1">Fight Arena</h1>
       <div className="fight">
         <Row className="d-flex justify-content-center">
           <Col>

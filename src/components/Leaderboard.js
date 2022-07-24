@@ -29,7 +29,7 @@ const Leaderboard = ({ onGoHome }) => {
 
   return (
     <Container fluid className="d-flex flex-column justify-content-center align-items-center pt-3 leader" style={{ height: "100vh" }}>
-      <h1>Leaderboard</h1>
+      <h1 className="title-h1">Leaderboard</h1>
       <Button onClick={onGoHome}>Home</Button>
       <Row className="d-flex justify-content-center flex-column align-items-center leader-container" style={{ maxHeight: "80vh" }}>
         <Col className="d-flex flex-wrap justify-content-center" style={{ maxHeight: "80vh" }}>

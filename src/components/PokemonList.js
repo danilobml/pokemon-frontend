@@ -40,7 +40,7 @@ function PokemonList({ itemsPerPage }) {
   }
   return (
     <Container fluid className="d-flex flex-column align-items-center text-center main" style={{ height: "100vh" }}>
-      <h1>PokeFight!! Choose your Pokemon!</h1>
+      <h1 className="title-h1">PokeFight!! Choose your Pokemon!</h1>
       <Button size="sm" onClick={() => navigate("/leaderboard")}>
         Leaderboard
       </Button>
