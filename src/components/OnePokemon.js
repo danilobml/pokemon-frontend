@@ -33,7 +33,7 @@ function OnePokemon({ onClick, onGoHome }) {
             {pokemon.name.english}
           </Link>
         </h1>
-        <p>*Click on the title, "Type" or "Base" for details</p>
+        <p>*Click on the Name, "Type" or "Base" for details</p>
         <br />
         <h2>Stats:</h2>
         <h3>
@@ -41,7 +41,7 @@ function OnePokemon({ onClick, onGoHome }) {
             Type
           </Link>
         </h3>
-        <ul>
+        <ul style={{ listStyleType: "none", paddingLeft: 0 }}>
           {pokemon.type.map((item) => (
             <li>{item}</li>
           ))}
@@ -51,7 +51,7 @@ function OnePokemon({ onClick, onGoHome }) {
             Base
           </Link>
         </h3>
-        <ul>
+        <ul style={{ listStyleType: "none", paddingLeft: 0 }}>
           <li>HP: {pokemon.base.HP}</li>
           <li>Attack: {pokemon.base.Attack}</li>
           <li>Defense: {pokemon.base.Defense}</li>

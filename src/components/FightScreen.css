@@ -22,3 +22,10 @@ span{
     font-size: 1.2rem;
     margin: 5px
 }
+
+h1{
+    font-family: 'Pokemon Solid', sans-serif;
+    color: rgb(255, 217, 0);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
